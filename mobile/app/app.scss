@@ -1,0 +1,21 @@
+@import '@nativescript/theme/core';
+@import '@nativescript/theme/default';
+ 
+.ns-light .page {
+  background-image: url('~/assets/background.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+}
+
+
+
+.ns-dark .page {
+  background-image: url('~/assets/backgroundd.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+}
+

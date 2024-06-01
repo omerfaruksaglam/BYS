@@ -1,0 +1,36 @@
+version: 'latest'
+
+services:
+  app:
+    image: nursapp:1.1
+    ports:
+      - "8090:8080" # Host makinedeki 8090 portunu, container'daki 8080 portuna yönlendiriyoruz
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5434/Nursappp
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: password
+      # Diğer gerekli çevre değişkenlerinizi buraya ekleyebilirsiniz.
+
+  db:
+    image: postgres:latest
+    ports:
+      - "5434:5432" # PostgreSQL'in varsayılan portu 5432 yerine, host makinede 5433 kullanılacak
+    environment:
+      POSTGRES_DB: Nursappp
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql # Veritabanını başlangıçta oluşturacak SQL dosyası
+
+
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - "5050:80"  # Host makinedeki 5050 portunu, container'daki 80 portuna yönlendiriyoruz
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com  # pgAdmin giriş için kullanıcı adı
+      PGADMIN_DEFAULT_PASSWORD: root  # pgAdmin giriş için şifre
+    depends_on:
+      - db

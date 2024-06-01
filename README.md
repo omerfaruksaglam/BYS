@@ -1,2 +1,2 @@
-# BYS
-Hemşirelik Becerileri Yönetim Sistemi 
+# NursingSkillAssessment
+NursingSkillAssessment - Skill tracking and assessment solution for nursing education
